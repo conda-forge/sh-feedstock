@@ -1,9 +1,10 @@
 # This file was generated automatically from conda-smithy. To update this configuration,
-# update the conda-forge.yaml and/or the recipe/meta.yaml.
+# update the conda-forge.yml and/or the recipe/meta.yaml.
 
 language: generic
 
 os: osx
+osx_image: beta-xcode6.1
 
 env:
   matrix:
@@ -13,7 +14,7 @@ env:
     - CONDA_PY=35
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
-    - secure: "A+wi6c1Z2/0xfgmDbpquT+rCrBa1PDdjtey1IfDYvP7ov+9rKN8Z6N+qn//NtC1Nycv0YWhyO9LhidU+lc+SpIKh3pfR4fbcdBOD437MovCBOntSf0QpnC1jUqRdhsXcFKF1tOJiTv7j0AOqeYKoBTZx9+dAOVTse2mTRKkDTH4LHVqObBVSRVn5iMolccRvbyHBysehfGk5HNwquPJLiLM8uTe/VCY+oSkEoLR/2mDiAemgWH8cnx9IFoiImqQLQLtUC5CMqJE7hR5cfAqYdV2sSddUWu4bRLmhL5FvC6L3aGXnCNb6cGgI1K/us06klwjoZEVnAmexmDs3SGlCwg9W1ykwkMlFQrvsu7tJoOyxSAMu1PMtT6kg06kwvjMhkc0HjHYIPLynUoqfYnwcfxZox4m0zM+PSH1QM6FsW3zwWBaWfKI38YHMMmCkVeQxnjC96N1VqpmIytpPvoEe0uBYcvtCsBMDTLB7g84MwQMv4Q2IPpwrcqEMA/Jk97aRCHhAgER2EDjwJ51O7L5MxsCkxMPh+mjXMK9USuu2UCzZkV6Gsr760+uofoz0GmwjLNQZpfgqQOyMlbqEnT7ykwyl+fmPNIdm48/3Kln4wwhdkjh6xkHOJHJZs8nuWHnXqN7GeZuV7vxxZxEfzvR8GPSmv3/vxHP4mMi+0Vgw9EQ="
+    - secure: "Qd/IpOgoyzL9u2Eyc3OC0b9XuIQZFAaWC6FJuEgJAHznRTxBAKxg0xklc4hKtEc+lkAOQVSrScKQWdbeoWi1PZNbiKtsy4TkjiLd+JyDvc9r2VlW7oBpoStzY4miTCyUXoFUSto+wVO3GJX6qzTf8CNk6uoQYpG76ekrVcPWU4KRdW+uirFYRM1UptkpNg3jotgLpToVLzATOM8rC3CS/JC7D6pb1+gKVavbJfkb8gxuBiHi2GGVEYtu1ti26GcUxt/JpYVOzFr14tUD8hg5VCL1bFROOYQihTWlk0jleUu/ocT1OxhTaWxQJqwGq2dhjQX2/LlkncG4MFRDo9OiEE2JcPD7wmQH1C6d6o99wjZGxP8gfNi4OzvHFFIgVE5w3tu5c6x/KFGqkc2Qd+hDsk4kJ1KpkBt6tcuvWiOmWkouVd9BzD8cloJkSQMlxjVs7yssICEa3z2yu392K1CGLMjVgnyPE/ftXkgJykDdU8AINIVhxEh4TwA5gFlXWuvO9MDVY20VRngXchl+chx0FTVBaNra9vw0nbWq4Q8E8GXvUtg1NzfKGG5XF9MtYhgFk1IR+kFpv80zKr9pJXlNNvbdNKBnPt7xYNfTaqdx4uz0mh5gzRLpMwmg7sV4r3ZQz2rV89V6DhQXqPl8qij5uD2lwdR7gagCGag+UFPuVCs="
 
 
 before_install:
@@ -24,12 +25,12 @@ before_install:
 
 install:
     - |
-      MINICONDA_URL="http://repo.continuum.io/miniconda"
+      MINICONDA_URL="https://repo.continuum.io/miniconda"
       MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-      curl -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+      curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
       bash $MINICONDA_FILE -b
 
-      export PATH=/Users/travis/miniconda3/bin:$PATH
+      source /Users/travis/miniconda3/bin/activate root
       conda config --add channels conda-forge
       conda config --set show_channel_urls true
       conda install --yes --quiet conda-forge-build-setup
@@ -38,4 +39,4 @@ install:
 script:
   - conda build ./recipe
 
-  - ./ci_support/upload_or_check_non_existence.py ./recipe conda-forge --channel=main
+  - upload_or_check_non_existence ./recipe conda-forge --channel=main
