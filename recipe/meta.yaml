@@ -1,6 +1,6 @@
 {% set name = "sh" %}
-{% set version = "1.11" %}
-{% set sha256 = "590fb9b84abf8b1f560df92d73d87965f1e85c6b8330f8a5f6b336b36f0559a4" %}
+{% set version = "1.12.14" %}
+{% set sha256 = "b52bf5833ed01c7b5c5fb73a7f71b3d98d48e9b9b8764236237bdc7ecae850fc" %}
 
 package:
   name: {{ name|lower }}
@@ -14,11 +14,12 @@ source:
 build:
   number: 0
   skip: true  # [win]
-  script: python setup.py install
+  script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
   build:
     - python
+    - setuptools 
 
   run:
     - python
