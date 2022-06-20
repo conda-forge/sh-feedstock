@@ -1,6 +1,6 @@
 {% set name = "sh" %}
-{% set version = "1.13.1" %}
-{% set sha256 = "97a3d2205e3c6a842d87ebbc9ae93acae5a352b1bc4609b428d0fd5bb9e286a3" %}
+{% set version = "1.14.2" %}
+{% set sha256 = "9d7bd0334d494b2a4609fe521b2107438cdb21c0e469ffeeb191489883d6fe0d" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
   script: {{ PYTHON }} -m pip install . -vv
 
