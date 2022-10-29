@@ -1,28 +1,27 @@
-{% set name = "sh" %}
 {% set version = "1.14.2" %}
 {% set sha256 = "9d7bd0334d494b2a4609fe521b2107438cdb21c0e469ffeeb191489883d6fe0d" %}
 
 package:
-  name: {{ name|lower }}
+  name: sh
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/s/sh/sh-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
+  noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python
+    - python >=2.7
     - pip
 
   run:
-    - python
+    - python >=2.7
+    - __unix
 
 test:
   imports:
