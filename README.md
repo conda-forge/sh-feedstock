@@ -145,6 +145,3 @@ Feedstock Maintainers
 
 * [@jakirkham](https://github.com/jakirkham/)
 
-
-<!-- dummy commit to enable rerendering -->
-
