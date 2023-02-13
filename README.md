@@ -7,7 +7,7 @@ Package license: MIT
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sh-feedstock/blob/main/LICENSE.txt)
 
-Summary: Python subprocess interface
+Summary: Python subprocess replacement
 
 Current build status
 ====================
