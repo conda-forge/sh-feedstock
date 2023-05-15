@@ -1,5 +1,5 @@
-{% set version = "2.0.3" %}
-{% set sha256 = "800efeda403b63879b0a5625f65a0021fd1ea61ed181954da0346372a7b2a341" %}
+{% set version = "2.0.4" %}
+{% set sha256 = "a18920f0839991bc9dfddb6dcc006c360b1064ba96257359f0ea356e9fa75a60" %}
 
 package:
   name: sh
