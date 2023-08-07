@@ -29,7 +29,9 @@ test:
     - sh
 
 about:
-  home: https://github.com/amoffat/sh
+  home: https://sh.readthedocs.io/
+  doc_url: https://sh.readthedocs.io/
+  dev_url: https://github.com/amoffat/sh
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
