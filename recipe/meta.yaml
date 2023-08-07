@@ -19,7 +19,6 @@ requirements:
     - python >=3.8.1
     - pip
     - poetry-core >=1.0.0a5
-
   run:
     - python >=3.8.1
     - __unix
