@@ -3,11 +3,15 @@ About sh-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sh-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/amoffat/sh
+Home: https://sh.readthedocs.io/
 
 Package license: MIT
 
 Summary: Python subprocess replacement
+
+Development: https://github.com/amoffat/sh
+
+Documentation: https://sh.readthedocs.io/
 
 Current build status
 ====================
