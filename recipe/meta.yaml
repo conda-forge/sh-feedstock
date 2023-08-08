@@ -24,6 +24,10 @@ requirements:
     - __unix
 
 test:
+  requires:
+    - pip
+  commands:
+    - pip check
   imports:
     - sh
 
