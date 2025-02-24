@@ -10,22 +10,23 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.8.1
+    - python {{ python_min }}
     - pip
     - poetry-core >=1.0.0a5
   run:
-    - python >=3.8.1
+    - python >={{ python_min }}
     - __unix
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
   imports:
