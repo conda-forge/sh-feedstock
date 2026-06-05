@@ -1,5 +1,5 @@
-{% set version = "2.2.2" %}
-{% set sha256 = "653227a7c41a284ec5302173fbc044ee817c7bad5e6e4d8d55741b9aeb9eb65b" %}
+{% set version = "2.2.3" %}
+{% set sha256 = "666aa35650a3c26ebae7be8549c1c7e68d205ad696040f956d98518900e137c5" %}
 
 package:
   name: sh
@@ -10,7 +10,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
