@@ -1,16 +1,15 @@
 schema_version: 1
 
 context:
-  version: "2.2.4"
-  sha256: 38c65e836b289ce14436b57ba35d3a87438218a1c0af535d89d648b1ed6b072e
+  version: 2.4.0
 
 package:
   name: sh
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/s/sh/sh-${{ version }}.tar.gz
-  sha256: ${{ sha256 }}
+- url: https://github.com/amoffat/sh/archive/refs/tags/${{ version }}.tar.gz
+  sha256: 4005f62c963127e6d6c0dcbb05fdbe6a9934bedf7529345a211df249b2f3efa6
 
 build:
   number: 0
@@ -21,7 +20,7 @@ requirements:
   host:
     - python ${{ python_min }}.*
     - pip
-    - poetry-core >=1.0.0a5
+    - hatchling
   run:
     - python >=${{ python_min }}
     - __unix
@@ -34,6 +33,14 @@ tests:
       python_version:
         - ${{ python_min }}.*
         - '*'
+  - requirements:
+      run:
+        - pytest
+    files:
+      source:
+        - tests/
+    script:
+      - pytest -vvv tests/
 
 about:
   license: MIT
