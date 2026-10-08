@@ -39,8 +39,10 @@ tests:
     files:
       source:
         - tests/
+    # The test compares getpass.getuser() with whoami; the build environment's
+    # user can differ from the one reported by whoami.
     script:
-      - pytest -vvv tests/
+      - pytest -vvv tests/ -k 'not test_subcommand_and_bake'
 
 about:
   license: MIT
