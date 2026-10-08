@@ -1,0 +1,57 @@
+schema_version: 1
+
+context:
+  version: 2.4.0
+
+package:
+  name: sh
+  version: ${{ version }}
+
+source:
+- url: https://github.com/amoffat/sh/archive/refs/tags/${{ version }}.tar.gz
+  sha256: 4005f62c963127e6d6c0dcbb05fdbe6a9934bedf7529345a211df249b2f3efa6
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - hatchling
+  run:
+    - python >=${{ python_min }}
+    - __unix
+
+tests:
+  - python:
+      imports:
+        - sh
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - '*'
+  - requirements:
+      run:
+        - pytest
+    files:
+      source:
+        - tests/
+    # The test compares getpass.getuser() with whoami; the build environment's
+    # user can differ from the one reported by whoami.
+    script:
+      - pytest -vvv tests/ -k 'not test_subcommand_and_bake'
+
+about:
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Python subprocess replacement
+  homepage: https://sh.readthedocs.io/
+  repository: https://github.com/amoffat/sh
+  documentation: https://sh.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - jakirkham
